@@ -1,48 +1,66 @@
-Assignment 2 – E-Commerce Application
-This project is a full-stack E-Commerce mobile app designed to demonstrate the connection between a React Native frontend and a Node.js + MySQL backend.
-The application allows users to explore a product catalog, check details, and interact with data stored in a real database.
+# A2 – Full-Stack E-Commerce App
 
- Technology Stack
-Frontend: React Native (Expo), React Navigation, Native Base
-Backend: Node.js, Express.js
-Database: MySQL
+## Tech
+- Frontend: React Native Expo, NativeBase, React Navigation, axios
+- Backend: Node.js, Express.js, MongoDB (Mongoose)
 
- Key Features
-Product Display Screen: Shows a list of products retrieved from the backend.
-API Integration: Fetches live data from a REST API built with Node.js and Express.
-Modular Project Setup: Clear separation between frontend and backend folders.
-User-Friendly Interface: Simple, mobile-friendly layout with responsive design.
-Scalable Codebase: Easily extendable for more advanced features (e.g., authentication, cart, checkout).
+- API base
 
- Steps to Run the Application
-Backend Setup
-cd backend
-node server.js
+Edit frontend/app.config.js → extra.API_URL to point to your backend (localhost or LAN IP).
 
-Frontend Setup
-cd frontend
-npx expo start
+Screens
 
-You can open the app using the Expo Go mobile app or through an Android/iOS emulator.
+Home (grid/list + search)
 
-🔗 API Endpoint Example
-Products are fetched dynamically from:
-http://localhost:3000/products
-and then displayed inside the app’s product listing screen.
+Product Details (add to cart)
 
-👨‍💻 Developed By
-Anas Bin Masud
-Registration No: 7860
-Course: Mobile Application Development – Assignment 2
+Cart (update/remove)
 
-📂 How to Add This File
-In your VS Code terminal, run:
-cd "C:\anasr\Documents\A2"
-echo > README.md
+Checkout (place order)
 
-Then open the created README.md file and paste this content inside.
-Finally, commit and push it using:
+Order Confirmation
 
-git add README.md
-git commit -m "Added custom README for E-Commerce App"
-git push
+Profile (signup/login)
+
+Categories/Filter
+
+How FE talks to BE
+
+The app uses src/api/axios.js to call Express endpoints:
+
+GET /api/products, GET /api/products/:id
+
+POST /api/auth/signup, POST /api/auth/login
+
+GET/POST/DELETE /api/cart
+
+POST /api/orders/checkout
+
+DB Setup
+
+Local MongoDB or MongoDB Atlas; models: Product, User, Order, CartItem.
+
+## Quick start
+
+### Frontend
+
+cd ecommerce-app/frontend
+npm i
+npm start
+
+### Backend
+
+cd ecommerce-app/backend
+cp .env.example .env   # or create .env as below
+# .env:
+# PORT=3000
+# MONGO_URI=mongodb://127.0.0.1:27017/ecommerce
+# JWT_SECRET=super_secret_change_me
+npm i
+npm run seed
+npm run dev
+
+Developed by:
+
+Anas Bin Masud 7860
+Assignment 2 – Mobile Application Development
